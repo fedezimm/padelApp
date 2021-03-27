@@ -1,6 +1,7 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model, Document, Types } from 'mongoose';
+//import { User } from './user';
 
-interface Club extends Document{
+export interface Club extends Document{
     name: string;
     owner: string;
     cuit: number;
@@ -8,6 +9,7 @@ interface Club extends Document{
     courts_quantity: number;
     reserves_in_app: boolean;
     organize_tournaments: boolean;
+    //admin: Types.ObjectId | User
 }
 
 const schema = new Schema(
@@ -19,6 +21,7 @@ const schema = new Schema(
         courts_quantity: {type:Number, required: true},
         reserves_in_app: {type: Boolean, required: true},
         organize_tournaments: {type: Boolean}
+        //admin: {type: Schema.Types.ObjectId, ref: 'user', required: true}
     });
 
 const Clubs = model<Club>('club',schema);

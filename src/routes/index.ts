@@ -1,17 +1,11 @@
 import {Application} from 'express'
 
-import * as usersController from '../controllers/users-controller';
-import * as clubsController from '../controllers/clubs-controller';
+import userRouter from './user-router';
+import clubRouter from './club-router';
 
-const createRoutes = (app:Application):void => {
-    // USERS ROUTES
-    app.get('/users',usersController.getUsers);
-    app.get('/users/:userId',usersController.getUserById);
-    app.post('/users/create',usersController.createUser);
-    // CLUBS ROUTES
-    app.get('/clubs',clubsController.getClubs);
-    app.get('/clubs/:clubId',clubsController.getClubById);
-    app.post('/clubs/create',clubsController.createClub);
-};
+const createRoutes = (app: Application):void => {
+    app.use('/users', userRouter);
+    app.use('/clubs', clubRouter);
+}
 
-export default createRoutes
+export default createRoutes;

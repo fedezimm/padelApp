@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import express, { Application,Request, Response } from 'express';
 import { urlencoded,json } from 'body-parser';
 import dotenv from 'dotenv';
